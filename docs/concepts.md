@@ -14,3 +14,12 @@ A process is restarted if all the following conditions are met:
  - `AutoRestart` is `true`
  - The process is enabled.
  - Current unstable restarts is less than `MaxRestarts` in daemon configuration.
+#### Name {#process-name}
+Process names must match the following regex:
+```rgx
+^(?!(-|[0-9]|\\/))([A-z]|[0-9]|_|-|\\.|@|#|\\/)+$
+```
+This means:
+ - Process names cannot start with a number, `-` or `/`
+ - Process names can contain the english alphabet and numbers.
+ - Process names can contain `_`, `-`, `.`, `@`, `#`, `/`.

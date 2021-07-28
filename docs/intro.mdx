@@ -1,0 +1,66 @@
+---
+sidebar_position: 1
+title: Introduction
+slug: /
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# JanD
+A process manager aiming for ease of use, predictable behaviour and respectable performance.
+### Installation
+
+<Tabs
+  defaultValue="linux"
+  values={[
+    {label: 'Linux', value: 'linux'},
+    {label: 'Arch Linux', value: 'arch-linux'},
+    {label: 'Windows', value: 'windows'},
+    {label: 'MacOS', value: 'macos'},
+  ]}>
+  <TabItem value="linux">
+    <a href="https://ci.nekos.cloud/buildConfiguration/JanD_Linux/lastFinished?buildTab=artifacts&guest=1">
+      <img src="https://ci.nekos.cloud/app/rest/builds/aggregated/strob:(branch:(buildType:(id:JanD_Linux),policy:active_history_and_active_vcs_branches),locator:(buildType:(id:JanD_Linux)))/statusIcon" alt="TeamCity linux-x64 build status"/>
+    </a><br/>
+    Grab <a href="https://github.com/Jan0660/JanD/releases">the latest release on GitHub</a> or the latest CI build on <a href="https://ci.nekos.cloud/buildConfiguration/JanD_Linux/lastFinished?buildTab=artifacts&guest=1">NekosCloud</a>.
+  </TabItem>
+  <TabItem value="arch-linux">
+    Install <a href="https://aur.archlinux.org/packages/jand-git/">jand-git</a> from AUR.
+  </TabItem>
+  <TabItem value="windows">
+    <a href="https://ci.nekos.cloud/buildConfiguration/JanD_Windows/lastFinished?buildTab=artifacts&guest=1">
+      <img src="https://ci.nekos.cloud/app/rest/builds/aggregated/strob:(branch:(buildType:(id:JanD_Windows),policy:active_history_and_active_vcs_branches),locator:(buildType:(id:JanD_Windows)))/statusIcon" alt="TeamCity win-x64 build status"/>
+    </a><br/>
+    Grab the latest CI build on <a href="https://ci.nekos.cloud/buildConfiguration/JanD_Windows/lastFinished?buildTab=artifacts&guest=1">NekosCloud</a>.
+  </TabItem>
+  <TabItem value="macos">
+    <a href="https://ci.nekos.cloud/buildConfiguration/JanD_Build/lastFinished?buildTab=artifacts&guest=1">
+      <img src="https://ci.nekos.cloud/app/rest/builds/aggregated/strob:(branch:(buildType:(id:JanD_Build),policy:active_history_and_active_vcs_branches),locator:(buildType:(id:JanD_Build)))/statusIcon" alt="TeamCity osx-x64 build status"/>
+    </a><br/>
+    Grab the latest CI build on <a href="https://ci.nekos.cloud/buildConfiguration/JanD_Build/lastFinished?buildTab=artifacts&guest=1">NekosCloud</a>.
+  </TabItem>
+</Tabs>
+
+### Basic Usage
+```bash
+# create a new process named "test" running "sleep 1" and start it
+jand start test sleep 1
+# restart "test"
+jand restart test
+# stop "test"
+jand stop test
+# start "test"
+jand start test
+# stop and delete "test"
+jand delete test
+# get list and status of current processes
+jand ls
+# watch logs of all your processes
+jand logs
+# get logs of "test"
+jand logs test
+# get information of "test"
+jand info test
+# get JanD to run on startup
+jand startup
+```

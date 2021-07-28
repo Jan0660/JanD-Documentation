@@ -27,3 +27,10 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.jand-check{
+  color:rgb(26, 136, 112)
+}
+.jand-x{
+  color: red;
+}

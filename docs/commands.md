@@ -1,123 +1,148 @@
 ---
 title: Commands
 ---
+
 ## Basic Commands
-### Start
-**Aliases:** `up`, `start`  
-**Arguments:** `<name$>`  
-Start a process if it isn't already started.
-#### Example:
-`start example`, `start /[0-9]/`
-### Start
-**Aliases:** `up`, `start`  
-**Arguments:** `<name> <executable> <args[]>`  
-Create a new process and start it. [Process name requirements](/concepts#process-name)
-### New
-**Aliases:** `up`, `start`  
-**Arguments:** `<name> <executable> <args[]>`  
-Create a new process but **do not** start it. [Process name requirements](/concepts#process-name)
-### Enable
-**Aliases:** `enable`  
-**Arguments:** `<name$[]>`  
-Enable a process.
-### Disable
-**Aliases:** `disable`  
-**Arguments:** `<name$[]>`  
-Disable a process.
-### List
-**Aliases:** `list`, `ls`, `l`  
-**Arguments:** `<regex[]>`  
+### start
+**Aliases:** `start`, `up`
+##### Options
+- **Name (Position 0)** Required. The process name.
+- **Command (Position 1)**  The command to start the new process with.
+- **Arguments (Position 2)**  The arguments to execute the command with.
+
+Start a process or create a new process and start it.
+### enable
+**Aliases:** `enable`, `disable`
+##### Options
+- **Processes$ (Position 0)** Required. 
+
+Enable/Disable a process.
+### list
+**Aliases:** `list`, `ls`, `l`
+##### Options
+- **Processes$ (Position 0)**  
+
 List processes with their information like the memory usage, restart counter and process id.
 The mini table of <span class="jand-x">x</span> or <span class="jand-check">√</span> represents:
- - **R**: If the process is currently running.
- - **E**: If the process is enabled.
- - **A**: If the process has AutoRestart enabled.
-#### Example:
-`list`, `list /[0-9]/`
-### Stop
-**Aliases:** `stop`, `down`  
-**Arguments:** `<name$[]>`  
+- **R**: If the process is currently running.
+- **E**: If the process is enabled.
+- **A**: If the process has AutoRestart enabled.
+### stop
+**Aliases:** `stop`, `down`
+##### Options
+- **Processes$ (Position 0)** Required. 
+
 Stop a process.
-### Restart
-**Aliases:** `restart`  
-**Arguments:** `<name$[]>`  
+### restart
+**Aliases:** `restart`
+##### Options
+- **Processes$ (Position 0)** Required. 
+
 Restart a process.
-### Info
-**Aliases:** `info`, `i`  
-**Arguments:** None  
-Get JanD information.
-### Info
-**Aliases:** `info`, `i`  
-**Arguments:** `<name$[]>`  
-Get process information.
-### Kill
-**Aliases:** `kill`  
-Stop all processes including their children processes and then exit the JanD daemon.
-### Save
-**Aliases:** `save`  
-Save configuration.
+### info
+**Aliases:** `info`, `i`
+##### Options
+- **Processes$ (Position 0)**  
+
+Get JanD information of information about a process.
+### new
+**Aliases:** `new`, `add`
+##### Options
+- **Name (Position 0)** Required. The process name.
+- **Command (Position 1)** Required. The command to start the new process with.
+- **Arguments (Position 2)** Required. The arguments to execute the command with.
+
+Create a new process.
+### kill
+**Aliases:** `kill`
+
+Stop all processes (and their children) and then kill JanD.
+### save
+**Aliases:** `save`
+
+Save JanD processes and configuration.
 ### start-daemon
-**Aliases:** `start-daemon`  
-Command used for starting the daemon.
-### Status
-**Aliases:** `status`  
-Get daemon status including the home directory, process count, configuration save status and the version it is running.
-### Logs
-**Aliases:** `logs`, `outlogs`, `errlogs`  
-Watches all of the new logs and process events.
-### Logs
-**Aliases:** `logs`, `outlogs`, `errlogs`  
-**Arguments:** `<name>`  
-Get the last 15 lines of stdout and stderr logs for a process and watch for new ones.
-### Delete
-**Aliases:** `delete`, `rm`  
-**Arguments:** `<name$[]>`  
+**Aliases:** `start-daemon`
+
+Start the daemon.
+### status
+**Aliases:** `status`
+
+Get daemon status.
+### logs
+**Aliases:** `logs`
+##### Options
+- **Process (Position 0)**  The process to get logs of.
+
+Get recent logs for a process and watch for new logs.
+### delete
+**Aliases:** `delete`, `remove`, `rm`
+##### Options
+- **Processes$ (Position 0)** Required. 
+
 Stop a process and delete it.
-### Send
-**Aliases:** `send`  
-**Arguments:** `<name> <text...>`  
-Send a line of text to a process' stdin.
-### Startup
-**Aliases:** `startup`  
-Make JanD run on startup, currently only works on SystemD and runit, OpenRC and s6 support is planned.
-### Flush
-**Aliases:** `flush`  
-Ensure all logs are written to disk. This may be redundant after version 0.6.0/commit [`067c835`](https://github.com/Jan0660/JanD/commit/067c83599c3cd77700746d07485bb80bf02cf127).
-### Rename
-**Aliases:** `rename`  
-**Arguments:** `<oldName> <newName>`  
+### startup
+**Aliases:** `startup`
+##### Options
+- **Username (Position 0)**  
+- **HomePath (Position 1)**  
+
+Add JanD to your system's startup.
+### events-json
+**Aliases:** `events-json`
+
+View events in raw JSON.
+### flush
+**Aliases:** `flush`
+
+Ensure all logs are written to disk. (May be redundant)
+### rename
+**Aliases:** `rename`
+##### Options
+- **Old Name (Position 0)** Required. 
+- **New Name (Position 1)** Required. 
+
 Rename a process.
-### Config
-**Aliases:** `config`  
-View current configuration options and their descriptions.
-### Config
-**Aliases:** `config`  
-**Arguments:** `<option> <value>`  
-Set a configuration option.
-### Events
-**Aliases:** `events`  
-Outputs all process events in a human readable format.
+### send
+**Aliases:** `send`
+##### Options
+- **Process (Position 0)** Required. 
+- **Data (Position 1)** Required. 
+
+Send line of text to process' stdin.
+### config
+**Aliases:** `config`
+##### Options
+- **Name (Position 0)**  
+- **Value (Position 1)**  
+
+View and edit configuration.
+### request
+**Aliases:** `request`
+##### Options
+- **Type (Position 0)** Required. The request type.
+- **Data (Position 1)**  The request data.
+- **--echo** (Default: `False`)  If the request should be echoed back.
+
+Send a raw request to the daemon.
 ## Group
-All these commands begin with the prefix of `group` or `grp`. Some more information in [Group Files](/group-files).
-### Start  
-**Aliases:** `group start`, `grp start`, `group up`, `grp up`  
-**Arguments:** `<name?>`  
-Create and start a group from the `jand-group.json` file in the current directory.
+### group start
+**Aliases:** `group start`, `group up`
+##### Options
+- **Group Name (Position 0)**  
+
+Start a group of processes.
 ## Advanced
-This category contains debugging or experimental commands.
-### Raw Request
-**Aliases:** `raw-request`, `request`  
-**Arguments:** `<type> <data>`  
-Send a request to the daemon. If using the `request` alias your request is echoed back to you.
-#### Example:
-`request status ""`
-### Set Process Property
-**Aliases:** `spp`  
-**Arguments:** `<ProcessName> <PropertyName> <Data>`  
-Set a process' property as defined in the `JanDProcess` class.
-### Completion generation process list
-**Aliases:** `compgen-proc-list`  
-For [bash autocompletion](https://gist.github.com/Jan0660/aef8220ac5c6028a3e6ef94a4654534d).
-### JSON Events
-**Aliases:** `events-json`  
-Output raw JSON of process events.
+### spp
+**Aliases:** `spp`
+##### Options
+- **Process (Position 0)**  
+- **Property (Position 1)**  
+- **Data (Position 2)**  
+
+
+### compgen-proc-list
+**Aliases:** `compgen-proc-list`
+
+
+

@@ -22,9 +22,19 @@ if($dir.Exists -eq $false){
     }
 }
 
+# copy readme
+# $str = [File]::ReadAllText("../JanD/README.md")
+# [File]::WriteAllText("./README.md", "---
+# sidebar_position: 2
+# title: README
+# ---" + $str)
+# generate command docs
 $commandsFile = [FileInfo]::new("./docs/commands.md").FullName
 $brb = [DirectoryInfo]::new(".").FullName
 Set-Location ../JanD/JanD.DocGeneration
-dotnet run | Out-File -FilePath $commandsFile
+git reset --hard
+git pull --force
+dotnet build
+dotnet run --no-build | Out-File -FilePath $commandsFile
 Set-Location $brb
 Write-Host "Finished generating commands docs."

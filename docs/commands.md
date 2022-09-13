@@ -23,7 +23,7 @@ Enable/Disable a process.
 - **Processes$ (Position 0)**  
 
 List processes with their information like the memory usage, restart counter and process id.
-The mini table of <span class="jand-x">x</span> or <span class="jand-check">√</span> represents:
+The mini table of <span class="jand-x">x</span> or <span class="jand-check">ΓêÜ</span> represents:
 - **R**: If the process is currently running.
 - **E**: If the process is enabled.
 - **A**: If the process has AutoRestart enabled.
@@ -44,13 +44,13 @@ Restart a process.
 ##### Options
 - **Processes$ (Position 0)**  
 
-Get JanD information of information about a process.
+Get JanD information or information about a process.
 ### new
 **Aliases:** `new`, `add`
 ##### Options
 - **Name (Position 0)** Required. The process name.
 - **Command (Position 1)** Required. The command to start the new process with.
-- **Arguments (Position 2)** Required. The arguments to execute the command with.
+- **Arguments (Position 2)**  The arguments to execute the command with.
 
 Create a new process.
 ### kill
@@ -63,6 +63,8 @@ Stop all processes (and their children) and then kill JanD.
 Save JanD processes and configuration.
 ### start-daemon
 **Aliases:** `start-daemon`
+##### Options
+- **--pidfile** (Default: ``)  Writes own PID to file.
 
 Start the daemon.
 ### status
@@ -73,6 +75,7 @@ Get daemon status.
 **Aliases:** `logs`
 ##### Options
 - **Process (Position 0)**  The process to get logs of.
+- **--lines** (Default: `15`)  Number of lines to get.
 
 Get recent logs for a process and watch for new logs.
 ### delete
@@ -125,6 +128,12 @@ View and edit configuration.
 - **--echo** (Default: `False`)  If the request should be echoed back.
 
 Send a raw request to the daemon.
+### attach
+**Aliases:** `attach`
+##### Options
+- **Process (Position 0)** Required. The process to attach to.
+
+
 ## Group
 ### group start
 **Aliases:** `group start`, `group up`

@@ -4,25 +4,18 @@ This page is up to date as of v0.7.0, lacking documentation for IPC events.
 :::
 The IPC on Windows is available via named pipes and on Linux it's available at `/tmp/CoreFxPipe_{JAND_PIPE}`.
 Messages to the daemon are sent in the following JSON format:
+
 ```json
 {"Type":"packet-type","Data":"hey"}
 ```
-## Examples
-Node.js example that requests `get-process-list`.
-```js
-import net from "net";
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
-let socket = net.connect("/tmp/CoreFxPipe_jand");
-socket.on("data", (data_buffer) => {
-    console.log(data_buffer.toString());
-});
-socket.write("{\"type\":\"get-process-list\"}");
-await sleep(1000);
-```
+
+Note that `Data` must always be a string,
+meaning when you're sending an object you have to convert it to a string.
+
+## Libraries
+
+You can use the unofficial Node.js library [jand-ipc](https://github.com/skybird23333/jand-ipc).
+
 ## Packet Types
 ### `exit`
 Kills all processes and exits the daemon.
@@ -100,9 +93,6 @@ The process' name.
 Make the daemon save it's configuration.
 ###### Response
 `done`
-### `get-process-list`
-###### Response
-An array of [ProcessInfo](#processinfo).
 ### `get-processes`
 ###### Response
 An array of [RuntimeProcessInfo](#runtimeprocessinfo).

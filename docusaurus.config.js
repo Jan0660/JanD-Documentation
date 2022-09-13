@@ -40,6 +40,7 @@ module.exports = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
+      additionalLanguages: ['csharp', 'json', 'regex'],
     },
 
     colorMode: {
@@ -54,7 +55,7 @@ module.exports = {
       // using user system preferences, instead of the hardcoded defaultMode
       respectPrefersColorScheme: true,
     },
-    metadatas: [{name: 'og:site_name', content: 'Documentation for JanD by Jan0660'}]
+    metadata: [{name: 'og:site_name', content: 'Documentation for JanD by Jan0660'}]
   },
   presets: [
     [

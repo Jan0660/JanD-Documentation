@@ -125,7 +125,7 @@ View and edit configuration.
 ##### Options
 - **Type (Position 0)** Required. The request type.
 - **Data (Position 1)**  The request data.
-- **--echo** (Default: `False`)  If the request should be echoed back.
+- **--echo** (Default: `false`)  If the request should be echoed back.
 
 Send a raw request to the daemon.
 ### attach
@@ -133,6 +133,12 @@ Send a raw request to the daemon.
 ##### Options
 - **Process (Position 0)** Required. The process to attach to.
 
+### vacuum
+**Aliases:** `vacuum`
+##### Options
+- **Processes$ (Position 0)** Processes whose logs should be vacuumed. (use `/./` for all)
+- **--keep-lines** (Default: `0`) Number of lines to keep in each log file. If 0 and `--force` is false, the user will be asked for confirmation.
+- **--force** (Default: `false`)  If the vacuum should be forced.
 
 ## Group
 ### group start

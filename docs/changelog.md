@@ -2,6 +2,19 @@
 title: Changelog
 ---
 
+## v0.8.0
+
+- Adds `vacuum` command.
+
+## v0.7.2
+
+- Fixes event sending not being thread-safe, resulting in the data received on the client side to be messed up.
+- A performance improvement by avoiding LINQ when sending log events.
+
+## v0.7.1
+
+- Fixes `set-process-property` not working after v0.7.0.
+
 ## v0.7.0
 
 - Switched to [CommandLineParser](https://github.com/commandlineparser/commandline) for parsing command line arguments.

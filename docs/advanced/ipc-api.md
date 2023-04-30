@@ -181,7 +181,7 @@ Ensure all logs are written to disk. This may be redundant after version 0.6.0/c
 }
 ```
 ### DaemonEvents
-The coments represent their name when given over IPC.
+The comments represent their name when given over IPC.
 ```csharp
 [Flags]
 public enum DaemonEvents
